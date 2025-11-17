@@ -28,13 +28,15 @@ const app = express()
 app.use(
   cors({
     origin: ["http://localhost:5173", 
-      "https://traveldiary-dhz6.onrender.com"
+      "https://traveldiary-dhz6.onrender.com",
     ],
    
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow CRUD operations
-    credentials: true, // Allow cookies & authorization headers
+    credentials: true, // Allow cookies & authorization headers,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 )
+app.options("*", cors());
 
 app.use(cookieParser())
 
